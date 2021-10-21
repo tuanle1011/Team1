@@ -1,0 +1,86 @@
+﻿@model IEnumerable<week10.Models.Property>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="card-body">
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>District</th>
+                <th>Adress</th>
+                <th>Area</th>
+                <th>Bedroom</th>
+                <th>Bathroom</th>
+                <th>Price</th>
+                <th>Interest Rate</th>
+                <th>Avatar</th>
+                <th>Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Property_Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Property_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Property_Type.Property_Type_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.District.District_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Area)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bed_Room)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bath_Room)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Installment_Rate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Avatar)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Property_Status.Property_Status_Name)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit","PropertyAdmin", new { id = item.ID })" class='fas fa-edit' style='font-size:25px;color:midnightblue'> </a> |
+                    <a href="@Url.Action("Delete","PropertyAdmin", new { id = item.ID })" class='fa fa-trash' style='font-size:25px;color:midnightblue'></a>
+</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

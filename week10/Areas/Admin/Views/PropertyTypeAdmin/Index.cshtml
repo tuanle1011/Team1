@@ -1,0 +1,54 @@
+﻿@model IEnumerable<week10.Models.Property_Type>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="card-body">
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Property_Type_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Property_Amount)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit","PropertyTypeAdmin", new { id = item.ID })" class='fas fa-edit' style='font-size:25px;color:midnightblue' > </a> |
+
+                        <a href="@Url.Action("Delete","PropertyTypeAdmin", new { id = item.ID })" class='fa fa-trash' style='font-size:25px;color:midnightblue'> </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
